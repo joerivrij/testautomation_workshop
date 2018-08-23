@@ -1,0 +1,19 @@
+---
+- hosts: local
+
+  vars:
+    do_token: "{{ do_token }}"
+    number_of_droplets: "{{ number_of_droplets }}"
+
+  tasks:
+
+  - digital_ocean: 
+      state=absent
+      command=droplet
+      name=dockerdroplet{{ item }}
+      unique_name=yes
+      size_id=s-2vcpu-4gb
+      region_id=ams3
+      image_id=ubuntu-14-04-x64
+      api_token={{ do_token }}
+    with_sequence: "start=1 count={{number_of_droplets | int }}"
