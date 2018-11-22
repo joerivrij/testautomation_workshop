@@ -1,8 +1,9 @@
 from flask import jsonify, request, Blueprint
 from flask_jwt_extended import jwt_required, get_jwt_identity
+from flask import current_app as app
 
 from project.middleware.error_handler import InvalidUsage
-from project.service import user_calls
+from project.service.user_calls import UserProxyAccess
 
 
 proxy_blueprint = Blueprint('proxy', __name__,)
@@ -37,7 +38,9 @@ def login_user_and_create_token():
           200:
             description: Your token has been created
     """
-    created_token = user_calls.verify_user_can_create_token(request.json['username'],
+    url = app.config["USERS_URL"]
+    user_service = UserProxyAccess(url)
+    created_token = user_service.verify_user_can_create_token(request.json['username'],
                                                             request.json['password'],
                                                             request.json['id'])
     response = {'access_token': created_token}

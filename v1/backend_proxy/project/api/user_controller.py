@@ -1,9 +1,10 @@
 from flask import jsonify, request, Blueprint
+from flask import current_app as app
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask_restplus import inputs
 
 from project.middleware.error_handler import InvalidUsage
-from project.service import user_calls
+from project.service.user_calls import UserProxyAccess
 from project.models import users
 
 
@@ -38,7 +39,9 @@ def create_a_new_user():
     user_to_post = users.CreationUserObject(request.json['username'],
                                             request.json['password'],
                                             'user')
-    created_user = user_calls.create_a_new_user(user_to_post)
+    url = app.config["USERS_URL"]
+    user_service = UserProxyAccess(url)
+    created_user = user_service.create_a_new_user(user_to_post)
     return jsonify(created_user), 200
 
 
@@ -77,7 +80,9 @@ def create_a_new_admin():
         user_to_post = users.CreationUserObject(request.json['username'],
                                                 request.json['password'],
                                                 'admin')
-        created_user = user_calls.create_a_new_user(user_to_post)
+        url = app.config["USERS_URL"]
+        user_service = UserProxyAccess(url)
+        created_user = user_service.create_a_new_user(user_to_post)
         return jsonify(created_user), 200
     else:
         #none admin
@@ -100,7 +105,9 @@ def show_all_users():
         description: User successfully accessed the content.
     """
     current_user_role = get_jwt_identity()['role']
-    response = user_calls.get_all_users()
+    url = app.config["USERS_URL"]
+    user_service = UserProxyAccess(url)
+    response = user_service.get_all_users()
     return jsonify(response), 200
 
 
@@ -131,7 +138,9 @@ def delete_a_user(id):
         raise InvalidUsage('Forbidden for this user', status_code=403)
     else:
         # admin
-        user_calls.delete_a_user(id)
+        url = app.config["USERS_URL"]
+        user_service = UserProxyAccess(url)
+        user_service.delete_a_user(id)
         return '', 204
 
 
@@ -172,7 +181,9 @@ def update_a_user(id):
     else:
         # admin
         active = request.json['active']
-        user_calls.update_a_user(id, active)
+        url = app.config["USERS_URL"]
+        user_service = UserProxyAccess(url)
+        user_service.update_a_user(id, active)
         return '', 204
 
 

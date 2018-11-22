@@ -90,7 +90,7 @@ def post_a_new_movie():
                   type: string
                   description: The type
               example:
-                title: Qquest goes wild
+                title: Testing goes wild
                 year: 2018
                 imdb: whatever
                 type: movie

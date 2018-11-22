@@ -12,7 +12,7 @@ class Development(BaseConfig):
     """Development configuration"""
     DEBUG = True
     USERS_URL = 'http://0.0.0.0:4242/api/'
-    MOVIE_URL = 'http://0.0.0.0:4243/api/'
+    MOVIES_URL = 'http://0.0.0.0:4243/api/movies'
 
 
 class Testing(BaseConfig):
@@ -25,5 +25,5 @@ class Production(BaseConfig):
     """Production configuration"""
     DEBUG = False
     USERS_URL = 'http://users:4242/api/'
-    MOVIE_URL = 'http://movies:4243/api/'
+    MOVIES_URL = 'http://movies:4243/api/movies'
 
