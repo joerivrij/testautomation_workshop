@@ -25,10 +25,10 @@ class MovieProxyAccess(object):
 
     @staticmethod
     def handle_non_200_status(response_code):
-        codes = {400: "Server returned a bad request call failed",
-                 404: "Server returned a not found",
-                   501: "Server returned a not implemented - service unavailable",
-                 500: "Server unavailable"
+        codes = { 400: "Server returned a bad request call failed",
+                  404: "Server returned a not found",
+                  501: "Server returned a not implemented - service unavailable",
+                  500: "Server unavailable"
                    }
 
         f = codes[response_code]
