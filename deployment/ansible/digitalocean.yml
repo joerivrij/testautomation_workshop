@@ -72,23 +72,11 @@
     authorized_key:
       user: root
       state: present
-      key: "{{ lookup('file', '/home/joerivrij/.ssh/putty/id_rsa.pub') }}"
+      key: "{{ lookup('file', '/home/joerivrij/.ssh/id_rsa.pub') }}"
 
   - name: Upload first docker-compose for host
     copy: 
       src=/home/joerivrij/Projects/qquest/qquest_testautomation_workshop/deployment/ansible/docker-compose1.yml
-      dest=/root/test 
-      mode=0644
-
-  - name: Upload second docker-compose for host
-    copy: 
-      src=/home/joerivrij/Projects/qquest/qquest_testautomation_workshop/deployment/ansible/docker-compose2.yml
-      dest=/root/test 
-      mode=0644
-
-  - name: Upload third docker-compose for host
-    copy: 
-      src=/home/joerivrij/Projects/qquest/qquest_testautomation_workshop/deployment/ansible/docker-compose3.yml
       dest=/root/test 
       mode=0644
 
