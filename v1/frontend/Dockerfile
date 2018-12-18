@@ -7,6 +7,7 @@ COPY movies.html /usr/share/nginx/html
 COPY login.html /usr/share/nginx/html
 COPY signup.html /usr/share/nginx/html
 COPY css/ /usr/share/nginx/html/css
+COPY js/ /usr/share/nginx/html/js
 COPY images/ /usr/share/nginx/html/images
 
 
