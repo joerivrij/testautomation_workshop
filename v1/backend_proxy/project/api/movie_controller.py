@@ -77,6 +77,38 @@ def get_specific_movie(id):
     response = movie_service.get_movie_id_based(id)
     return jsonify(response), 200
 
+
+@movie_blueprint.route('/searches', methods=['GET'])
+@jwt_required
+def get_movies_with_search_term():
+    """
+    Protected content method.
+    ---
+    description: Protected content method. Can not be seen without valid token.
+    tags:
+      - Movie Methods
+    security:
+      - APIKeyHeader: []
+    parameters:
+      - name: query
+        type: string
+        in: query
+        required: true
+        description: specific movie you want to query
+        example: star
+    responses:
+      200:
+        description: User successfully accessed the content.
+    """
+    query = request.args.get('query')
+    DataValidator.validate_query(query)
+    url = app.config["MOVIES_URL"]
+    movie_service = MovieProxyAccess(url)
+    response = movie_service.get_movie_with_search_param(query)
+    return jsonify(response), 200
+
+
+
 @movie_blueprint.route('/', methods=['POST'])
 @jwt_required
 def post_a_new_movie():

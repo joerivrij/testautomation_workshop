@@ -34,8 +34,9 @@ def get_movie_by_id(id):
     except pymongo.errors.OperationFailure:
         error_message = "oops, mongo error"
         error_object = ErrorModel(id, error_message)
-        return_object = {'status_code': 404, 'body': error_object}
+        return_object = {'status_code': 500, 'body': error_object}
         return return_object
+
 
 def get_list_of_movies():
     try:
@@ -51,15 +52,19 @@ def get_list_of_movies():
     except pymongo.errors.OperationFailure:
         error_message = "oops, mongo error"
         error_object = ErrorModel("All movies", error_message)
-        return_object = {'status_code': 404, 'body': error_object}
+        return_object = {'status_code': 500, 'body': error_object}
         return return_object
 
 
-def get_list_of_the_movies():
+def get_movie_by_search_term(search_term):
     try:
         movie_col = db.movies
-        regx = re.compile("^the", re.IGNORECASE)
+        regx = re.compile(search_term + "*", re.IGNORECASE)
         specified_document = movie_col.find({'title': regx})
+        if specified_document.count() == 0:
+            error_object = ErrorModel("Nothing found for: " + search_term, "No movie found")
+            return_object = {'status_code': 404, 'body': error_object}
+            return return_object
         documents = []
         mapper = MovieMapper()
         for document in specified_document:
@@ -69,8 +74,13 @@ def get_list_of_the_movies():
         return return_object
     except pymongo.errors.OperationFailure:
         error_message = "oops, mongo error"
-        error_object = ErrorModel("All the movies", error_message)
-        return_object = {'status_code': 404, 'body': error_object}
+        error_object = ErrorModel("Specific movie", error_message)
+        return_object = {'status_code': 500, 'body': error_object}
+        return return_object
+    except TypeError:
+        error_message = "oops, that cannot be done Bad programmer Error!"
+        error_object = ErrorModel("Specific movie", error_message)
+        return_object = {'status_code': 500, 'body': error_object}
         return return_object
 
 
@@ -88,12 +98,12 @@ def post_a_movie(mongo_object):
         else:
             error_message = 'Insert not successful, please make sure to post valid json'
             error_object = ErrorModel("All movies", error_message)
-            return_object = {'status_code': 404, 'body': error_object}
+            return_object = {'status_code': 400, 'body': error_object}
             return return_object
     except pymongo.errors.OperationFailure:
         error_message = "oops, mongo error"
         error_object = ErrorModel("All movies", error_message)
-        return_object = {'status_code': 404, 'body': error_object}
+        return_object = {'status_code': 500, 'body': error_object}
         return return_object
 
 
