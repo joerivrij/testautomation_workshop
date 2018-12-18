@@ -67,3 +67,14 @@ services:
        - moviemongo
        - moviegres
        - users
+
+  frontend:
+    image: joerivrij/testautomation_workshop_frontend:v1
+    build: ./v1/frontend
+    ports:
+    - 80:80
+    depends_on:
+    - proxy
+    links:
+    - proxy
+

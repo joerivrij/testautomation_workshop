@@ -76,7 +76,7 @@
 
   - name: Upload first docker-compose for host
     copy: 
-      src=/home/joerivrij/Projects/qquest/qquest_testautomation_workshop/deployment/ansible/docker-compose1.yml
+      src=/home/joerivrij/projects/testautomation_workshop/deployment/ansible/docker-compose.yml
       dest=/root/test 
       mode=0644
 
