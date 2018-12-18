@@ -12,6 +12,13 @@ class DataValidator(object):
         return
 
     @staticmethod
+    def validate_query(search_term):
+        schema = {'query': {'type': 'string', 'required': True, 'minlength': 1}}
+        list_to_validate = {'query': search_term}
+        DataValidator.validate_schema(schema, list_to_validate)
+        return
+
+    @staticmethod
     def validate_schema(schema, file):
         v = Validator(schema)
         valid = v.validate(file, schema)

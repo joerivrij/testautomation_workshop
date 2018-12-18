@@ -45,23 +45,36 @@ def get_movie_by_id(id):
 def movie_get_all_movies():
     """
         Endpoint to get information about movies
+        If no query param is given all movies will be returned
+        When using a query param that movie will be searched
         ---
         tags:
           - Movies Methods
+        parameters:
+          - name: search
+            type: string
+            in: query
+            required: false
+            description: specific movie you want to query
+            example: star
         responses:
           400:
             description: Incorrect data used
           200:
             description: Your movie query is correct
     """
-    return_model = mongo_movies.get_list_of_movies()
+    query = request.args.get('search')
+    if query is None:
+        return_model = mongo_movies.get_list_of_movies()
+    else:
+        query = request.args.get('search')
+        return_model = mongo_movies.get_movie_by_search_term(query)
     if return_model['status_code'] is 200:
         res = json.dumps(return_model['body'], indent=4)
         return res, 200
     else:
-        res = json.dumps(return_model['body'], indent=4)
+        res = json.dumps(return_model['body'].__dict__, indent=4)
         return res, return_model['status_code']
-
 
 
 @movies_blueprint.route('/api/movies', methods=['POST'])

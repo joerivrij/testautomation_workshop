@@ -13,6 +13,12 @@ class MovieProxyAccess(object):
         r = requests.get(self.url + '/' + id)
         return json.loads(r.text)
 
+    def get_movie_with_search_param(self, search_term):
+        r = requests.get(self.url + '?search=' + search_term)
+        if r.status_code != 200:
+            self.handle_non_200_status(r.status_code)
+        return json.loads(r.text)
+
     def get_all_movies(self):
         r = requests.get(self.url)
         return json.loads(r.text)
