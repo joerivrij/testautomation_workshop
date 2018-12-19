@@ -1,0 +1,85 @@
+/** todo create var file and import
+* primary color
+* font, etc..
+**/
+
+body {
+  background-color: rgb(238, 197, 72);
+  margin: 0;
+  font-family: Verdana, Helvetica;
+}
+
+header, section, main {
+  padding: 38px 26px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+header {
+  background-color: rgb(80, 80, 80);
+  justify-content: space-between;
+}
+
+section {
+  justify-content: left;
+}
+
+main {
+  justify-content: space-around;
+}
+
+a {
+  color: #FFFFFF;
+}
+
+a:focus, a:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+button, a.button{
+  background-color: #2056A0;
+  color: #FFF;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+hr {
+  width: 100%;
+}
+
+section, .cta__container {
+  color: #fff;
+  background-color: #000;
+  justify-content: left;
+}
+
+.header__logo {
+  display: inline-block;
+}
+
+.header__title h2 {
+  margin: 0;
+}
+
+.header-menu {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.header-menu__item {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+
+.header-menu__link {
+
+}
+
+.header-menu__link--active {
+
+}

@@ -1,17 +1,13 @@
-# -- NGINX - environment --
-FROM nginx:stable-alpine
+# build stage
+FROM node:9.11.1-alpine as build-stage
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
 
-# Copy files and directories from the application
-COPY index.html /usr/share/nginx/html
-COPY movies.html /usr/share/nginx/html
-COPY login.html /usr/share/nginx/html
-COPY signup.html /usr/share/nginx/html
-COPY css/ /usr/share/nginx/html/css
-COPY js/ /usr/share/nginx/html/js
-COPY images/ /usr/share/nginx/html/images
-
-
-# Open port 80
+# production stage
+FROM nginx:1.13.12-alpine as production-stage
+COPY --from=build-stage /app/dist /usr/share/nginx/html
 EXPOSE 80
-
 CMD ["nginx", "-g", "daemon off;"]
