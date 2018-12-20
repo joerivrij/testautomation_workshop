@@ -12,16 +12,29 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'Login',
   data() {
     return {
       msg: 'Welcome to Your Vue.js App',
+      loginUrl: 'http://localhost:8080/v1/proxy/tokens'
     };
   },
   methods: {
     login() {
-      console.info('Ik log nu in!');
+      const formData = {
+        // todo, remove after back-end fix
+        id: 3,
+        userName: this.userName,
+        password: this.password,
+      };
+      console.info(formData);
+      // todo, fix CORS issue with OPTIONS call and allow-origin *
+      axios.post(this.loginUrl, formData)
+        .then(res => console.info(res))
+        .catch(error => console.error(error));
     },
   },
 };
