@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       msg: 'Welcome to Your Vue.js App',
-      loginUrl: 'http://localhost:8080/v1/proxy/tokens'
+      loginUrl: 'http://localhost:8080/v1/proxy/tokens',
     };
   },
   methods: {
