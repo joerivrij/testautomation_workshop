@@ -6,7 +6,7 @@ from project import create_app
 
 
 app = create_app()
-CORS(app)
+CORS(app, supports_credentials=True)
 jwt = JWTManager(app)
 manager = Manager(app)
 
