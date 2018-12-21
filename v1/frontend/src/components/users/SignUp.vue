@@ -29,7 +29,7 @@ export default {
   name: 'SignUp',
   data() {
     return {
-      submitUrl: 'http://localhost:8080/v1/proxy/users',
+      submitUrl: 'http://localhost:8080/v1/proxy/users/',
       msg: 'Welcome to Your Vue.js App',
       username: '',
       password: '',
@@ -41,11 +41,15 @@ export default {
       const formData = {
         userName: this.userName,
         password: this.password,
-        confirmPassword: this.confirmPassword,
       };
+      const config = {
+        responseType: 'json',
+        withCredentials: true,
+      };
+
       console.info(formData);
       // todo, fix CORS issue with OPTIONS call and allow-origin *
-      axios.post(this.submitUrl, formData)
+      axios.post(this.submitUrl, formData, config)
         .then(res => console.info(res))
         .catch(error => console.error(error));
     },
