@@ -2,6 +2,7 @@
   <div>
     <v-header></v-header>
     <section class="cta__container jumbotron text-center">
+      <router-link tag="button" :to="{name: 'movies'}">Show all movies</router-link>
       <p>{{currentMovie.title}}</p>
     </section>
     <main class="movies">

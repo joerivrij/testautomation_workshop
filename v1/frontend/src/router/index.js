@@ -12,6 +12,7 @@ Vue.use(Router);
 
 const router = new Router({
   // mode: 'history',
+  base: '/',
   routes: [
     {
       path: '/',
@@ -20,29 +21,30 @@ const router = new Router({
     },
     {
       path: '/movies',
-      name: 'All Movies',
+      name: 'movies',
       component: Movies,
       meta: { requiresAuth: false },
     },
     {
       path: '/:imdbId/movie',
       component: MovieDetail,
-      name: 'Movie',
+      name: 'movie',
       meta: { requiresAuth: true },
+      props: true,
     },
     {
       path: '/login',
-      name: 'Login',
+      name: 'login',
       component: Login,
     },
     {
       path: '/logout',
-      name: 'Logout',
+      name: 'logout',
       component: Logout,
     },
     {
       path: '/signup',
-      name: 'SignUp',
+      name: 'signUp',
       component: SignUp,
     },
   ],

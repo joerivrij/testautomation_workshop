@@ -12,7 +12,7 @@
           <p>{{movie.description}}</p>
           <router-link
             tag="a"
-            :to="`/${movie.imdb}/movie`"
+            :to="{ name: 'movie', params: { imdbId: movie.imdb }}"
             v-if="loggedIn">more...</router-link>
         </li>
       </ul>

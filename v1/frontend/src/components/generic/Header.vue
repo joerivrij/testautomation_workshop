@@ -10,22 +10,22 @@
       <li
         class="header-menu__item"
         v-if="!loggedIn">
-        <router-link tag="a" :to="'signup'">Sign Up</router-link>
+        <router-link tag="a" :to="{name: 'signUp'}">Sign Up</router-link>
       </li>
       <li
         class="header-menu__item"
         v-if="!loggedIn">
-        <router-link tag="a" :to="'login'">Login</router-link>
+        <router-link tag="a" :to="{name: 'login'}">Login</router-link>
       </li>
       <li
         class="header-menu__item"
         v-if="loggedIn">
-        <router-link tag="a" :to="'profile'">Profile</router-link>
+        <router-link tag="a" :to="{name: 'profile'}">Profile</router-link>
       </li>
       <li
         class="header-menu__item"
         v-if="loggedIn">
-        <router-link tag="a" :to="'logout'">Logout</router-link>
+        <router-link tag="a" :to="{name: 'logout'}">Logout</router-link>
       </li>
     </ul>
   </header>
