@@ -8,7 +8,13 @@
 export default {
   name: 'App',
   created() {
-    this.$store.dispatch('tryAutoLogin');
+    const autoLoggedIn = this.$store.dispatch('tryAutoLogin');
+
+    autoLoggedIn.then((loggedIn) => {
+      if (loggedIn) {
+        this.$router.push({ name: 'movies' });
+      }
+    });
   },
 };
 </script>
