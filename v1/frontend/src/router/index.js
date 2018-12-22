@@ -6,6 +6,7 @@ import Home from '@/components/movies/Home';
 import Login from '@/components/users/Login';
 import Logout from '@/components/users/Logout';
 import SignUp from '@/components/users/SignUp';
+import Profile from '@/components/users/Profile';
 import store from '../store/store';
 
 Vue.use(Router);
@@ -46,6 +47,11 @@ const router = new Router({
       path: '/signup',
       name: 'signUp',
       component: SignUp,
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: Profile,
     },
   ],
 });
