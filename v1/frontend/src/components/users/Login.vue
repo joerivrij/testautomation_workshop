@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'Login',
@@ -33,29 +33,18 @@ export default {
     };
   },
   methods: {
+    ...mapActions([
+      'loginWithCredentials',
+    ]),
     login() {
       const formData = {
-        // todo, remove after back-end fix
-        id: 1,
         username: this.userName,
         password: this.password,
       };
-      const config = {
-        responseType: 'json',
-        withCredentials: true,
-      };
-
-      console.info(formData);
-      // todo, fix CORS issue with OPTIONS call and allow-origin *
-      axios.post(this.loginUrl, formData, config)
-        .then(res => console.info(res))
-        .catch(error => console.error(error));
+      if (this.loginWithCredentials(formData)) {
+        this.$router.push('movies');
+      }
     },
   },
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>

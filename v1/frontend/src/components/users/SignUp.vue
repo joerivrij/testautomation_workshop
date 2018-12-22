@@ -47,8 +47,7 @@ export default {
         withCredentials: true,
       };
 
-      console.info(formData);
-      // todo, fix CORS issue with OPTIONS call and allow-origin *
+      // todo *
       axios.post(this.submitUrl, formData, config)
         .then(res => console.info(res))
         .catch(error => console.error(error));

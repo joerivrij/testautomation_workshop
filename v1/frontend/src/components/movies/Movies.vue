@@ -2,13 +2,18 @@
   <div class="movies">
     <v-header></v-header>
     <section class="cta__container jumbotron text-center">
-      <hr>
+      <hr v-if="loggedIn">
+      <search-movie v-if="loggedIn"></search-movie>
     </section>
     <main class="movies">
       <ul>
-        <li v-for="movie in movies" :key="movie">
+        <li v-for="(movie, index) in movies" :key="index">
           <h3>{{movie.title}}</h3>
           <p>{{movie.description}}</p>
+          <router-link
+            tag="a"
+            :to="`/${movie.imdb}/movie`"
+            v-if="loggedIn">more...</router-link>
         </li>
       </ul>
     </main>
@@ -17,6 +22,8 @@
 
 <script>
 import axios from 'axios';
+import { mapGetters } from 'vuex';
+import SearchMovie from '../generic/SearchMovie';
 
 export default {
   name: 'Movies',
@@ -26,23 +33,23 @@ export default {
       movies: [],
     };
   },
+  components: {
+    'search-movie': SearchMovie,
+  },
+  computed: {
+    ...mapGetters([
+      'loggedIn',
+    ]),
+  },
   methods: {
     getAllMovies() {
       axios.get('http://localhost:8080/v1/proxy/movies/').then((res) => {
-        console.info('alle films');
         this.movies = res.data;
-        console.info(this.movies);
       });
     },
   },
   mounted() {
-    console.info('mounted');
     this.getAllMovies();
   },
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>
