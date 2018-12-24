@@ -1,9 +1,9 @@
 <template>
   <div class="home">
-    <v-header></v-header>
+    <v-header>Movies</v-header>
     <section class="cta__container jumbotron text-center">
       <hr>
-      <router-link tag="button" :to="'movies'">All Movies</router-link>
+      <router-link tag="button" :to="'movies'">List all movies</router-link>
     </section>
     <main class="sneek-preview">
       <div class="sneek-preview__container">

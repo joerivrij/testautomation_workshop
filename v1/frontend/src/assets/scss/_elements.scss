@@ -1,12 +1,10 @@
-/** todo create var file and import
-* primary color
-* font, etc..
-**/
+// Elements ////////////////////////////
 
 body {
   background-color: rgb(238, 197, 72);
   margin: 0;
-  font-family: Verdana, Helvetica;
+  font-family: $font-base;
+  box-sizing: border-box;
 }
 
 header, section, main {
@@ -41,45 +39,15 @@ button, a.button{
   background-color: #2056A0;
   color: #FFF;
   border: none;
-  border-radius: 10px;
-  padding: 10px;
+  border-radius: 8px;
+  padding: 12px 18px;
   cursor: pointer;
   text-decoration: none;
+  font-size: 20px;
+  height: 47px;
 }
 
 hr {
   width: 100%;
-}
-
-section, .cta__container {
-  color: #fff;
-  background-color: #000;
-  justify-content: left;
-}
-
-.header__logo {
-  display: inline-block;
-}
-
-.header__title h2 {
-  margin: 0;
-}
-
-.header-menu {
-  display: inline-block;
-  text-decoration: none;
-}
-
-.header-menu__item {
-  display: inline-block;
-  margin-left: 20px;
-}
-
-
-.header-menu__link {
-
-}
-
-.header-menu__link--active {
-
+  border-color: #707070;
 }

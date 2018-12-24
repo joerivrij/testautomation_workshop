@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <v-header></v-header>
+    <v-header>Login</v-header>
     <section class="login__container jumbotron text-center">
       <label for="username">Username</label>
       <input
@@ -48,3 +48,27 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+  label {
+    box-sizing: border-box;
+    min-width: 220px;
+    padding-right: 15px;
+    padding-top: 6px;
+    height: 38px;
+    border: none;
+    margin-bottom: 15px;
+    font-size: 20px;
+  }
+
+  input {
+    box-sizing: border-box;
+    height: 38px;
+    border: none;
+    width: calc(100% - 220px);
+    margin-bottom: 15px;
+    border-radius: 8px;
+    padding: 15px 10px;
+    font-size: 20px;
+  }
+</style>

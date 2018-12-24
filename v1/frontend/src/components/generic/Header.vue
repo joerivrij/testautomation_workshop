@@ -4,7 +4,7 @@
       <img @click="navigateToHome" src="../../assets/imtdb.svg" alt="" class="logo">
     </div>
     <div class="header__title">
-      <h2>Movies</h2>
+      <h2><slot></slot></h2>
     </div>
     <ul class="header-menu">
       <li
@@ -49,7 +49,40 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  h2, a{
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+  }
+  h2 {
+    color: #707070;
+  }
+  a {
+    text-decoration: none;
+    color: #D0D0D0;
+  }
+  ul {
+    margin: 0;
+  }
   .logo {
     cursor: pointer;
+  }
+
+  .header__logo {
+    display: inline-block;
+  }
+
+  .header__title h2 {
+    margin: 0;
+  }
+
+  .header-menu {
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  .header-menu__item {
+    display: inline-block;
+    margin-left: 20px;
   }
 </style>

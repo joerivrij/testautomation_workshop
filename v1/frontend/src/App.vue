@@ -15,10 +15,12 @@ export default {
         this.$router.push({ name: 'movies' });
       }
     });
+
+    this.$store.dispatch('getMovies');
   },
 };
 </script>
 
-<style>
-  @import './scss/styles.scss';
+<style lang="scss">
+  @import './assets/scss/styles.scss';
 </style>
