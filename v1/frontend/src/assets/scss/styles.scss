@@ -3,11 +3,9 @@
 @import '_elements';
 
 section, .cta__container {
-  color: #fff;
-  background-color: #000;
-  justify-content: left;
+  color: $white;
+  background-color: $black;
 }
-
 
 .header-menu__link {
 

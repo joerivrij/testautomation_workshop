@@ -95,64 +95,66 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '../../assets/scss/_variables.scss';
+
   ul {
-    padding: 0;
     min-width: 100%;
+    padding: 0;
     margin-top: 0;
   }
 
   li {
-    list-style-type: none;
-    background: #fff;
+    display: flex;
     margin: 50px -26px;
     padding: 26px;
-    display: flex;
-  }
-
-  a {
-    color: blue;
+    background: $white;
+    list-style-type: none;
   }
 
   .movie__image-container {
+    flex: 1 0 auto;
     width: 250px;
     max-width: 250px;
-    flex: 1 0 auto;
+
     .movie__image-box {
-      height: 0;
-      overflow: hidden;
-      padding-top: 297px / 210px * 100%;
       position: relative;
+      overflow: hidden;
+      height: 0;
+      padding-top: 297px / 210px * 100%;
+
       img {
-        object-fit: cover;
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
+        object-fit: cover;
       }
     }
   }
 
   .movie__details {
-    padding-left: 26px;
     position: relative;
     width: 100%;
+    padding-left: 26px;
+
     h3 {
       margin-top: 0;
     }
+
     button {
       position: absolute;
-      bottom: 0;
       right: 0;
-      background: url('../../assets/icons/baseline-expand_more-24px.svg') no-repeat center;
-      border: solid 1px #000;
-      border-radius: 50%;
-      color: #000;
+      bottom: 0;
       width: 35px;
       height: 35px;
       padding: 0;
-      text-indent: -100000px;
+      color: $white;
+      background: url('../../assets/icons/baseline-expand_more-24px.svg') no-repeat center;
+      border: solid 1px #000;
       outline: none;
+      border-radius: 50%;
+      text-indent: -100000px;
     }
   }
 </style>

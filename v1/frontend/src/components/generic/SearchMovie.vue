@@ -23,29 +23,32 @@ export default {
 
 <style lang="scss" scoped>
   .search-movie {
-    background-color: rgb(180, 180, 180);
-    padding: 0 15px;
-    border-radius: 8px;
-    width: 100%;
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    padding: 0 15px;
+    background-color: rgb(180, 180, 180);
+    border-radius: 8px;
 
     &__input {
-      background-color: rgb(180, 180, 180);
-      border: none;
-      color: #000;
       width: calc(100% - 50px);
-      font-size: 20px;
+      height: 58px;
+      color: #000;
+      border: none;
       outline: none;
+      margin-bottom: 0;
+      background-color: rgb(180, 180, 180);
+      font-size: 20px;
     }
 
     &__button {
+      width: 50px;
+      height: 58px;
+      color: #000;
       background: url('../../assets/icons/baseline-search-24px.svg') no-repeat center;
       border: none;
-      color: #000;
-      width: 50px;
-      text-indent: -100000px;
       outline: none;
+      text-indent: -100000px;
     }
   }
 </style>

@@ -56,7 +56,7 @@ export default new Vuex.Store({
         password: credentials.password,
         id: 1,
       };
-      axios.post(state.loginUrl, cred, config)
+      return axios.post(state.loginUrl, cred, config)
         .then((res) => {
           const token = res.data.access_token;
           const expirationDate = new Date(Date.now() + (res.data.expires_in * 1000));

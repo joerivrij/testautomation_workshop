@@ -47,33 +47,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '../../assets/scss/_variables.scss';
+
   section {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
     box-sizing: border-box;
+    align-items: baseline;
   }
+
   dl {
     display: flex;
-    flex-wrap: wrap;
-    font-size: 20px;
-    background: #fff;
-    margin: 0 -26px;
-    padding: 30px 15px;
+    box-sizing: border-box;
     width: calc(100% + 52px);
     min-width: 100%;
-    box-sizing: border-box;
+    margin: 0 -26px;
+    padding: 30px 15px;
+    background: $white;
+    flex-wrap: wrap;
+    font-size: 20px;
   }
+
   dt {
+    box-sizing: border-box;
     width: calc(50% - 15px);
     text-align: right;
     padding-right: 15px;
     font-weight: bold;
-    box-sizing: border-box;
   }
+
   dd {
-    margin-left: auto;
-    width: 50%;
     box-sizing: border-box;
+    width: 50%;
+    margin-left: auto;
   }
 </style>

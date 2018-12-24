@@ -4,6 +4,7 @@ import MovieDetail from '@/components/movies/MovieDetail';
 import Movies from '@/components/movies/Movies';
 import Home from '@/components/movies/Home';
 import Login from '@/components/users/Login';
+import LoginFailed from '@/components/users/LoginFailed';
 import Logout from '@/components/users/Logout';
 import SignUp from '@/components/users/SignUp';
 import Profile from '@/components/users/Profile';
@@ -37,6 +38,11 @@ const router = new Router({
       path: '/login',
       name: 'login',
       component: Login,
+    },
+    {
+      path: '/login-failed',
+      name: 'loginFailed',
+      component: LoginFailed,
     },
     {
       path: '/logout',
