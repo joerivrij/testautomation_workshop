@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <v-header>Login Failed</v-header>
-    <section class="login__container jumbotron text-center">
+    <section class="cta__container">
       <hr>
       <router-link tag="button" :to="{name: 'login'}">Retry</router-link>
       <h2>Login Failed</h2>

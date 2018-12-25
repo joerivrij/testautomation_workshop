@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <v-header>Movies</v-header>
-    <section class="cta__container jumbotron text-center">
+    <section class="cta__container">
       <hr>
       <router-link tag="button" :to="'movies'">List all movies</router-link>
     </section>
@@ -16,11 +16,6 @@
 
 <script>
 export default {
-  name: 'Movies',
-  data() {
-    return {
-      msg: 'Welcome to Your Vue.js App',
-    };
-  },
+  name: 'Home',
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="movies">
     <v-header>All Movies</v-header>
-    <section class="cta__container jumbotron text-center">
+    <section class="cta__container">
       <hr v-if="loggedIn">
       <search-movie class="search-movie" v-model="searchValue" v-if="loggedIn"></search-movie>
     </section>

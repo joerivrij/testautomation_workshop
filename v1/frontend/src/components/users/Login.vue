@@ -2,7 +2,7 @@
   <div class="login">
     <v-header>Login</v-header>
     <form>
-      <section class="login__container jumbotron text-center">
+      <section class="cta__container">
         <hr>
         <label for="username">Username</label>
         <input

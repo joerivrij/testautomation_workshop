@@ -1,7 +1,7 @@
 <template>
   <div class="user-profile">
     <v-header>User Profile</v-header>
-    <section class="cta__container jumbotron text-center">
+    <section class="cta__container">
       <router-link tag="button" :to="{name: 'movies'}">Show all movies</router-link>
       <h2>Profile settings of: {{currentUser.name}}</h2>
     </section>

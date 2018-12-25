@@ -2,7 +2,7 @@
   <div class="login">
     <v-header>Sign Up</v-header>
     <form>
-      <section class="login__container jumbotron text-center">
+      <section class="login__container">
         <hr>
         <label for="username">Username</label>
         <input type="text"
@@ -28,35 +28,22 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'SignUp',
   data() {
     return {
       submitUrl: 'http://localhost:8080/v1/proxy/users/',
-      msg: 'Welcome to Your Vue.js App',
       username: '',
       password: '',
       confirmPassword: '',
     };
   },
   methods: {
-    signUp() {
-      const formData = {
-        userName: this.userName,
-        password: this.password,
-      };
-      const config = {
-        responseType: 'json',
-        withCredentials: true,
-      };
-
-      // todo *
-      axios.post(this.submitUrl, formData, config)
-        .then(res => console.info(res))
-        .catch(error => console.error(error));
-    },
+    ...mapActions([
+      'signUp',
+    ]),
   },
 };
 </script>

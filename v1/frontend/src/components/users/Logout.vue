@@ -1,7 +1,7 @@
 <template>
   <div class="logout">
     <v-header></v-header>
-    <section class="logout__container jumbotron text-center">
+    <section class="cta__container">
       <p v-if="loggedIn">Hello, still logged in..</p>
       <p v-if="!loggedIn">You are successfully logged out.</p>
     </section>
