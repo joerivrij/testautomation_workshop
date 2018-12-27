@@ -43,7 +43,7 @@ def login_user_and_create_token():
     created_token = user_service.verify_user_can_create_token(request.json['username'],
                                                             request.json['password'],
                                                             request.json['id'])
-    response = {'access_token': created_token}
+    response = {'access_token': created_token, 'expires_in': 3600 }
     return jsonify(response), 200
 
 
