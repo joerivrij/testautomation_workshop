@@ -11,6 +11,11 @@ def insert_collections():
     connectionstring = CONNECTION
     client = MongoClient(connectionstring)
     db = client.video
+    try:
+        print("dropping movies collection")
+        db.movies.drop()
+    except:
+        print("no collection to delete")
     postids = []
     files = get_json_files()
     for file in files:
