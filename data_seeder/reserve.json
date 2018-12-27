@@ -29978,13 +29978,4 @@
 		"imdb": "tt0823633",
 		"type": "movie"
 	},
-	{
-		"_id": {
-			"$oid": "5b11686f95332c38b11ae801"
-		},
-		"imdb": "whatever",
-		"title": "Qquest goes wild",
-		"type": "movie",
-		"year": 2018
-	}
 ]
