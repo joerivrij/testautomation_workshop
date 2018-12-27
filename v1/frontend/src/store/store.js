@@ -9,10 +9,10 @@ export default new Vuex.Store({
     token: '',
     userId: null,
     userName: null,
-    proxyUrl: 'http://localhost:8080',
-    loginUrl: 'http://localhost:8080/v1/proxy/tokens/',
-    signUpUrl: 'http://localhost:8080/v1/proxy/users/',
-    moviesUrl: '/v1/proxy/movies/',
+    proxyUrl: process.env.ROOT_PROXY_API,
+    loginUri: '/v1/proxy/tokens/',
+    signUpUri: '/v1/proxy/users/',
+    moviesUri: '/v1/proxy/movies/',
     loggedIn: false,
     loginExpires: null,
     currentMovie: {},
@@ -56,7 +56,7 @@ export default new Vuex.Store({
         password: credentials.password,
         id: 1,
       };
-      return axios.post(state.loginUrl, cred, config)
+      return axios.post(state.proxyUrl + state.loginUri, cred, config)
         .then((res) => {
           const token = res.data.access_token;
           const expirationDate = new Date(Date.now() + (res.data.expires_in * 1000));
@@ -107,7 +107,7 @@ export default new Vuex.Store({
           'Content-Type': 'application/json',
         },
       });
-      axiosInstance.get(`${state.moviesUrl}`)
+      axiosInstance.get(`${state.moviesUri}`)
         .then((res) => {
           commit('setMovies', res.data);
           return true;
@@ -126,7 +126,7 @@ export default new Vuex.Store({
           'Content-Type': 'application/json',
         },
       });
-      axiosInstance.get(`${state.moviesUrl + imdbId}`)
+      axiosInstance.get(`${state.moviesUri + imdbId}`)
         .then((res) => {
           commit('setCurrentMovie', res.data);
           return true;
@@ -146,7 +146,7 @@ export default new Vuex.Store({
         },
         params: { query: searchValue },
       });
-      axiosInstance.get(`${state.moviesUrl}searches`)
+      axiosInstance.get(`${state.moviesUri}searches`)
         .then((res) => {
           commit('setSearchedMovies', res.data);
           return true;
