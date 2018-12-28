@@ -11,7 +11,19 @@
         <li v-for="(movie, index) in getMovies" :key="index">
           <div class="movie__image-container">
             <div class="movie__image-box">
-              <img src="../../assets/movie_posters/starwars1.jpg" alt="" class="movie__image">
+              <router-link
+                tag="a"
+                :to="{ name: 'movie', params: { imdbId: movie.imdb }}"
+                v-if="loggedIn">
+                <img v-if="movie.image"
+                     :src="(movie.image.indexOf('http') === 0
+                   ? movie.image
+                   : `../../assets/movie_posters/${movie.image}`)"
+                     alt="" class="movie__image">
+                <img v-if="!movie.image"
+                     src="../../assets/movie_posters/starwars1.jpg"
+                     alt="" class="movie__image">
+              </router-link>
             </div>
           </div>
           <div class="movie__details">
