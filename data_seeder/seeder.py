@@ -60,6 +60,7 @@ def create_sample_users():
     posted_users = [resp_admin.text, resp_user.text]
     return posted_users
 
+
 print("Starting to import")
 jsonfiles = get_json_files()
 for file in jsonfiles:
