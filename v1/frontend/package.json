@@ -12,7 +12,7 @@
     "test": "npm run stylelint && npm run lint && npm run test:unit",
     "lint": "eslint --ext .js,.vue src test/unit",
     "stylelint": "stylelint .scss, .vue, .css",
-    "build": "node build/build.js"
+    "build": "node build/build.js && docker-compose build && docker-compose up -d"
   },
   "dependencies": {
     "axios": "^0.18.0",
