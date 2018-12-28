@@ -44,6 +44,8 @@ class UserProxyAccess(object):
         for user in response['allUsers']:
             if user['username'].lower() == username.lower():
                 user_object = UserObject(user['username'], user['role'], user['id'], user['active'])
+        if user_object is None:
+            raise InvalidUsage('No user found for that user_name', status_code=404)
         return user_object
 
     def get_all_users(self):
