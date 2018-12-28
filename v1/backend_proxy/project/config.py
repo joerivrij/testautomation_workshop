@@ -5,7 +5,7 @@ class BaseConfig:
     """Base configuration"""
     DEBUG = False
     TESTING = False
-    JWT_SECRET_KEY = 'qquest_secret'
+    JWT_SECRET_KEY = 'testautomation_secret'
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=60)
 
 class Development(BaseConfig):

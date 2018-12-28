@@ -111,6 +111,34 @@ def show_all_users():
     return jsonify(response), 200
 
 
+@user_blueprint.route('/<username>', methods=['GET'])
+@jwt_required
+def get_user_by_name(username):
+    """
+    Get a userid in the backend
+    ---
+    description: Protected content method. Can not be seen without valid token. Only admins can delete users
+    tags:
+      - User Methods
+    security:
+      - APIKeyHeader: []
+    parameters:
+      - name: username
+        type: string
+        in: path
+        required: true
+        example: testadmin
+        description: user you want to query
+    responses:
+      200:
+        description: User successfully accessed the content.
+    """
+    url = app.config["USERS_URL"]
+    user_service = UserProxyAccess(url)
+    response = user_service.get_user_id(username)
+    return jsonify(response.__dict__), 200
+
+
 @user_blueprint.route('/<id>', methods=['DELETE'])
 @jwt_required
 def delete_a_user(id):
