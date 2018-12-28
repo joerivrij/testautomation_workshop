@@ -11,6 +11,11 @@ def insert_collections():
     connectionstring = CONNECTION
     client = MongoClient(connectionstring)
     db = client.video
+    try:
+        print("dropping movies collection")
+        db.movies.drop()
+    except:
+        print("no collection to delete")
     postids = []
     files = get_json_files()
     for file in files:
@@ -54,6 +59,7 @@ def create_sample_users():
     resp_user = requests.post("http://users:4242/api/Users", data = non_admin_user, headers=headers)
     posted_users = [resp_admin.text, resp_user.text]
     return posted_users
+
 
 print("Starting to import")
 jsonfiles = get_json_files()
