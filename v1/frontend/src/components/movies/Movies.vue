@@ -6,7 +6,6 @@
       <search-movie class="search-movie" v-model="searchValue" v-if="loggedIn"></search-movie>
     </section>
     <main class="movies">
-
       <ul v-if="!searchValue">
         <li v-for="(movie, index) in getMovies" :key="index">
           <div class="movie__image-container">
@@ -37,7 +36,6 @@
           </div>
         </li>
       </ul>
-
       <ul v-if="searchValue && getSearchedMovies.length > 0">
         <li v-for="(searchedMovie, index) in getSearchedMovies" :key="index">
           <div class="movie__image-container">
@@ -71,7 +69,6 @@ export default {
   name: 'Movies',
   data() {
     return {
-      msg: 'Welcome to Your Vue.js App',
       movies: [],
       searchValue: '',
       searchResults: [],
