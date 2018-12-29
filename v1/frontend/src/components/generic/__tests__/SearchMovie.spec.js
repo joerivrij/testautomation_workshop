@@ -3,19 +3,18 @@ import SearchMovie from '../SearchMovie';
 
 describe('Item.vue', () => { // #A
   test('value of parent is bound as model', () => {
-    const searchValue = 'een hele moeilijke term';
     const wrapper = shallowMount(SearchMovie, {
       propsData: {
-        value: 'Pino'
-      }
+        value: 'Pino',
+      },
     });
     expect(wrapper.vm.inputVal).toBe('Pino');
   });
   test('Input value can be set from parent', () => {
     const wrapper = shallowMount(SearchMovie, {
       propsData: {
-        value: 'Tommy'
-      }
+        value: 'Tommy',
+      },
     });
     expect(wrapper.vm.inputVal).toBe('Tommy');
   });
@@ -23,7 +22,7 @@ describe('Item.vue', () => { // #A
     const wrapper = shallowMount(SearchMovie, {
       propsData: {
         value: 'Pino',
-      }
+      },
     });
     const input = wrapper.find('input');
     expect(input.element.value).toBe('Pino');

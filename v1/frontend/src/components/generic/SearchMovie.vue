@@ -12,7 +12,7 @@ export default {
   props: ['value'],
   data() {
     return {
-      inputVal: this.value
+      inputVal: this.value,
     };
   },
   watch: {

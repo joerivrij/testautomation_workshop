@@ -41,6 +41,7 @@ module.exports = {
         'e' // for e.returnvalue
       ]
     }],
+    'import/newline-after-import': ['off'],
     'no-console': ["error", { allow: ["info", "warn", "error"] }],
     // allow optionalDependencies
     'import/no-extraneous-dependencies': ['error', {

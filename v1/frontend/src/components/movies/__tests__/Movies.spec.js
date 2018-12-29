@@ -1,8 +1,8 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
-import Movies from '../Movies';
-import Header from '../../generic/Header';
 import Vuex from 'vuex';
 import VueRouter from 'vue-router';
+import Movies from '../Movies';
+import Header from '../../generic/Header';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
@@ -26,7 +26,7 @@ describe('Movies.vue', () => {
   test('render image based on url', () => {
     const $getMovies = [];
     const wrapper = shallowMount(Movies, {
-      mocks: {$getMovies},
+      mocks: { $getMovies },
       localVue,
       store,
     });
