@@ -130,7 +130,7 @@ export default {
         return false;
       });
   },
-  signUp: ({ commit, state }, credentials) => {
+  signUp: ({ state }, credentials) => {
     const config = {
       responseType: 'json',
       withCredentials: true,
@@ -140,17 +140,7 @@ export default {
       password: credentials.password,
     };
     return axios.post(state.proxyUrl + state.usersUri, cred, config)
-      .then((res) => {
-        const token = res.data.access_token;
-        const expirationDate = new Date(Date.now() + (res.data.expires_in * 1000));
-        commit('setToken', {
-          token,
-          userId: cred.id,
-          userName: cred.username,
-          loginExpires: expirationDate,
-        });
-        return true;
-      })
+      .then(() => true)
       .catch((error) => {
         console.error(error);
         return false;

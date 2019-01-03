@@ -45,7 +45,6 @@ export default {
   },
   computed: {
     canSubmit() {
-      // must parse because Vue turns empty value to string
       return (this.confirmPassword === this.password) &&
         !!this.password &&
         !!this.confirmPassword &&
