@@ -11,7 +11,9 @@ export default {
   name: 'search-movie',
   props: ['value'],
   data() {
-    return { inputVal: this.value };
+    return {
+      inputVal: this.value,
+    };
   },
   watch: {
     inputVal(val) {

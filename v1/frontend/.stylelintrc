@@ -248,7 +248,7 @@
     "indentation": 2,
     "max-empty-lines": 2,
     "max-line-length": [
-      100,
+      120,
       {
         "ignore": [
           "comments"

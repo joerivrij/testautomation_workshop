@@ -19,3 +19,12 @@ export default {
   name: 'Home',
 };
 </script>
+
+<style lang="scss" scoped>
+  @import '../../assets/scss/_variables.scss';
+
+  main {
+    min-height: calc(100vh - (#{$header-height + $mid-height})) !important;
+    background: $primary-gradient;
+  }
+</style>
