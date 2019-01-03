@@ -19,21 +19,29 @@ export default {
       password: credentials.password,
       id: 1,
     };
-    return axios.post(state.proxyUrl + state.loginUri, cred, config)
-      .then((res) => {
-        const token = res.data.access_token;
-        const expirationDate = new Date(Date.now() + (res.data.expires_in * 1000));
-        commit('setToken', {
-          token,
-          userId: cred.id,
-          userName: cred.username,
-          loginExpires: expirationDate,
-        });
-        localStorage.setItem('token', JSON.stringify(token));
-        localStorage.setItem('userId', JSON.stringify(cred.id));
-        localStorage.setItem('userName', JSON.stringify(cred.username));
-        localStorage.setItem('expirationDate', JSON.stringify(expirationDate));
-        return true;
+    return axios.get(state.proxyUrl + state.usersUri + credentials.username)
+      .then((userResult) => {
+        cred.id = userResult.data.id;
+        return axios.post(state.proxyUrl + state.loginUri, cred, config)
+          .then((res) => {
+            const token = res.data.access_token;
+            const expirationDate = new Date(Date.now() + (res.data.expires_in * 1000));
+            commit('setToken', {
+              token,
+              userId: cred.id,
+              userName: cred.username,
+              loginExpires: expirationDate,
+            });
+            localStorage.setItem('token', JSON.stringify(token));
+            localStorage.setItem('userId', JSON.stringify(cred.id));
+            localStorage.setItem('userName', JSON.stringify(cred.username));
+            localStorage.setItem('expirationDate', JSON.stringify(expirationDate));
+            return true;
+          })
+          .catch((error) => {
+            console.error(error);
+            return false;
+          });
       })
       .catch((error) => {
         console.error(error);
@@ -122,8 +130,30 @@ export default {
         return false;
       });
   },
-  // signUp: () => {
-  //   console.info('todo implement');
-  //   console.info('yep');
-  // },
+  signUp: ({ commit, state }, credentials) => {
+    const config = {
+      responseType: 'json',
+      withCredentials: true,
+    };
+    const cred = {
+      username: credentials.username,
+      password: credentials.password,
+    };
+    return axios.post(state.proxyUrl + state.usersUri, cred, config)
+      .then((res) => {
+        const token = res.data.access_token;
+        const expirationDate = new Date(Date.now() + (res.data.expires_in * 1000));
+        commit('setToken', {
+          token,
+          userId: cred.id,
+          userName: cred.username,
+          loginExpires: expirationDate,
+        });
+        return true;
+      })
+      .catch((error) => {
+        console.error(error);
+        return false;
+      });
+  },
 };

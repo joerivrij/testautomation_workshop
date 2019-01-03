@@ -13,7 +13,7 @@ export default new Vuex.Store({
     userName: null,
     proxyUrl: process.env.ROOT_PROXY_API,
     loginUri: '/v1/proxy/tokens/',
-    signUpUri: '/v1/proxy/users/',
+    usersUri: '/v1/proxy/users/',
     moviesUri: '/v1/proxy/movies/',
     loggedIn: false,
     loginExpires: null,
