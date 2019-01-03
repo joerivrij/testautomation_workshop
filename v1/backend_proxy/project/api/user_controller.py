@@ -112,16 +112,13 @@ def show_all_users():
 
 
 @user_blueprint.route('/<username>', methods=['GET'])
-@jwt_required
 def get_user_by_name(username):
     """
     Get a userid in the backend
     ---
-    description: Protected content method. Can not be seen without valid token. Only admins can delete users
+    description: Query a user based on username
     tags:
       - User Methods
-    security:
-      - APIKeyHeader: []
     parameters:
       - name: username
         type: string
