@@ -7,6 +7,7 @@ import Login from '@/components/users/Login';
 import LoginFailed from '@/components/users/LoginFailed';
 import Logout from '@/components/users/Logout';
 import SignUp from '@/components/users/SignUp';
+import SignUpSuccess from '@/components/users/SignUpSuccess';
 import Profile from '@/components/users/Profile';
 import store from '../store/store';
 
@@ -58,6 +59,11 @@ const router = new Router({
       path: '/profile',
       name: 'profile',
       component: Profile,
+    },
+    {
+      path: '/signupsuccess/:userName',
+      name: 'signUpSuccess',
+      component: SignUpSuccess,
     },
   ],
 });
