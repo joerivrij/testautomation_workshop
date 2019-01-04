@@ -5,11 +5,13 @@
         <router-link
           tag="a"
           :to="{ name: 'movie', params: { imdbId: movie.imdb }}">
-          <img
-            :src="(movie.image ?
-                   movie.image :
-                   `../../assets/movie_posters/no-poster.png`)"
+          <img v-if="movie.image"
+            :src="movie.image"
             :alt="movie.image"
+            class="movie__image">
+          <img v-if="!movie.image"
+            src="../../assets/movie_posters/no-poster.png"
+            alt="No movie image available"
             class="movie__image">
         </router-link>
       </div>
@@ -31,15 +33,11 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'movieItem',
   props: ['movie'],
-  data() {
-    return {};
-  },
   computed: {
     ...mapGetters([
       'loggedIn',
     ]),
   },
-
 };
 </script>
 
