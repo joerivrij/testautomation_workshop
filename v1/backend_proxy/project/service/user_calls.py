@@ -13,7 +13,7 @@ class UserProxyAccess(object):
     def verify_user_can_create_token(self, username, password, id):
         self.validate_user_and_id_match(id, username)
         user = self.get_user_role(id)
-        post_body = json.dumps({"userName": username, "passWord": password})
+        post_body = json.dumps({"userName": username.lower(), "passWord": password})
         headers = {'content-type': 'application/json'}
         r = requests.post(self.url + "Validation", data=post_body, headers=headers)
         response = json.loads(r.text)
@@ -27,7 +27,7 @@ class UserProxyAccess(object):
 
     def validate_user_and_id_match(self, id, username):
         r = requests.get(self.url + "Users/" + str(id))
-        matched_id = r.json()['username'] == username
+        matched_id = r.json()['username'].lower() == username.lower()
         if not matched_id:
             raise InvalidUsage('User and id do not match', status_code=400)
         return

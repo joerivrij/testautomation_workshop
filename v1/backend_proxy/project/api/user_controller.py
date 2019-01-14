@@ -77,7 +77,7 @@ def create_a_new_admin():
     current_user_role = get_jwt_identity()['role']
     if current_user_role == 'admin':
         # admin
-        user_to_post = users.CreationUserObject(request.json['username'],
+        user_to_post = users.CreationUserObject(request.json['username'].lower(),
                                                 request.json['password'],
                                                 'admin')
         url = app.config["USERS_URL"]
