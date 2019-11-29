@@ -20,6 +20,6 @@ pytz==2018.4
 PyYAML==5.1
 requests>=2.20.0
 six==1.11.0
-urllib3==1.23
+urllib3==1.24.2
 Werkzeug==0.15.3
 Cerberus==1.1
